@@ -1,0 +1,11 @@
+Hosting a Static Website using Amazon S3
+
+Create a s3 bucket
+upload file
+remove block public access from the block public access menu in permissions
+Access control menu allow read access to public to allow read your website
+enable static website hosting in the properties 
+add public bucket lifecycle policy
+use your oublic dns to visit your website
+
+Your static website is ready
