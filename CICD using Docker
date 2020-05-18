@@ -1,0 +1,30 @@
+https://docs.docker.com/compose/wordpress/
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04
+https://stackoverflow.com/questions/41055669/unable-to-connect-to-jenkins-server-amazon-linux-ami
+https://support.cloudbees.com/hc/en-us/articles/360029791092-Why-is-the-option-Launch-agent-by-connecting-it-to-the-master-not-available
+
+
+Setting up Jenkins Master Slave on AWS
+install jenkins
+
+sudo apt install openjdk-8-jdk 
+then follow 1st link
+then open your server on port 8080
+open jenkins 
+setup it
+create master 
+two slaves
+create aws 2 server 
+downloads agent.jar
+and upload using filezilla
+use jenkins command to create jenkins master slave 
+
+in jenkins some configration is required
+
+Create a CI/CD pipeline triggered by Git Web Hook
+
+
+
+sudo docker rm -f $(sudo docker ps -a -q)
+sudo docker build /home/ubuntu/workspace/Test -t test
+sudo docker run -it -p 82:80 -d test
