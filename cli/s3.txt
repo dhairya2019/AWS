@@ -23,3 +23,8 @@ aws s3 rb s3://bucket-name
 
 Command to remove the object inside the bucket
 aws s3 rm s3://bucket-name/*   --recursive    //It will remove everything
+
+
+//If you are having a use case to compress the files stored in S3 of your company data so that it will decrease the space utilization
+aws s3 cp s3://bucket-name/pre - | bzip2 --best | aws s3 cp - s3://bucket-name/key.bz2
+//It uses the bzip algorithm to copy the content from source to the destination
