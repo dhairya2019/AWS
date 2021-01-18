@@ -1,0 +1,25 @@
+Goal 
+Create Ec2 instance from CLI by creating:
+1.Private Key = dhairya
+2.Security Group=sg-08da16ff119549258
+
+
+aws ec2 run-instances --image-id ami-04b1ddd35fd71475a --key-name dhairya --security-group-ids sg-08da16ff119549258 --count 1   --instance-type t2.micro --subnet-id subnet-2f013b47
+
+
+
+aws ec2 create-volume --availability-zone ap-south-1a --size 1  --volume-type gp2
+
+
+aws ec2 attach-volume --volume-id vol-03e0dd7dcc6909bf7    --instance-id i-01977f1cbed2d5c5b --device /dev/sdf
+
+aws ec2 detach-volume --volume-id vol-03e0dd7dcc6909bf7
+
+aws ec2 describe-instances
+
+
+aws ec2 create-security-group --group-name clisg --description "My CLI security group" --vpc-id vpc-00e9f468
+
+aws ec2 create-key-pair --key-name dhairya
+
+aws ec2 stop-instances --instance-ids i-01977f1cbed2d5c5b

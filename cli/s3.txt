@@ -1,0 +1,25 @@
+//Command to create S3 bucket in specific location using s3api
+aws s3api create-bucket --bucket bucket-name --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
+
+//Command to delete S3 bucket using S3api
+aws s3api delete-bucket --bucket bucket-name
+
+//Command to display all the buckets
+aws s3 ls
+
+//Command to create bucket using mb
+aws s3 mb s3://bucket-name
+
+
+//Command to move the file from local directory to s3 bucket
+aws s3 mv filename.txt s3://bucket-name/
+
+//Command to copy the file from local directory to s3 bucket
+aws s3 cp filename.txt s3://bucket-name/
+
+
+Command to remove the bucket
+aws s3 rb s3://bucket-name
+
+Command to remove the object inside the bucket
+aws s3 rm s3://bucket-name/*   --recursive    //It will remove everything
