@@ -1,0 +1,90 @@
+1. The block storage are of three type:
+a.Root (Ebs but losse if instance gone) coming from network using iscsi protocol
+b.Persistent(EBS but greater durability as it is like an external pendrive  coming from network using iscsi protocol
+c.Ephermal which is also known as instance backed storage which are superfast in terms of read and write
+
+Why you cannot use Ec2 from 1a and EBS from 1b   //Important
+Answer: Actually there have been no issue for this but due to this the throughput of the read and write operation will decrease
+as in AWS the compute unit and storage unit are at different places and are connected using network using iscsi protocol so if 
+AWS allow us to use the scenario we will face very high latency due to seperation of two azs with a distance of 100's of miles
+
+But there are some instance types which are backed with storage as well as compute unit which uses storage locally rather than
+using iscsi target or fiber channels 
+
+
+2. AWS snapshots have completely replaced backuping technology in terms of speed relaibility and space and cost optimizations
+The concept of delta makes our data backup so fast and easier 
+
+Snapshot is also known as point in time backup
+it  points to the previous backups and itself contains only delta parts
+
+We can also create a flag to restrict particluar data of one backup from being restored on any data
+
+3. AWS EBS Volumes is having very great feature of scaling up the volume vertically after creation. This same concept is implemneted 
+by Linux LVM
+
+4. Amazon doesn't support copying of ebs volume into different AZ or region but we can do this by creating snapshot and as we know 
+snapshot internally store the data in  S3 which is a global service therefore you can create EBS volume in any  az using snapshot
+and for cross-region copying you need to copy in different region
+
+5. To create our own AMi either we can use snapshot and create image or we can use Amazon Image Builder option in AMi option in EC2
+Ami copies everything inside your / root directory
+
+6. EFS Storage is far more better than EBS as well as S3
+
+If you have a use case of sharing on eparticular code to multiple servers/instances in one go and everybody should get a feel of their
+own personal environment after mounting the storage it is EFS. Internally it is known NFS as a storage service and it uses NFS protocol
+for transmitting the file system over network 
+
+EBS cannot be shared to multipe system at one single time
+
+S3 can be shared to multiple system at a single time but one cannot execute the code which is residing in S3. You first need to store that
+code locally in your hardisk as code requires fs or partition to run 
+
+Secondly if you have a requirement of only first 10 lines of a particular file it is not possible in case of S3 as it is a object storage
+It will first donwload the whole file in your local fs or root volume then you can perform any task but in  case of EFS you can do that
+
+7.If you create a encrypted volume and then create a snapshot which would automatically be encrypted and then you create volume from that
+it would also be encrypted
+Volumes that are created from encrypted snapshots are always encrypted
+
+If your volume you created is not encrypted mistankenly then you can create snapshot 
+
+
+8. AWS guys work on SDN Software defined netweork there is usually no real network but it is software that seems like router or switch or 
+
+9.DMZ(De-Militarized ZOne) If you expose your private subnet to outside world by configuring the DNAT'ing(Destination Network Address Translation Rule)
+into your router which acts as a medium between the outside world and the private world .It is also known as expose
+
+Router with dnating capability in AWS is called Internet Gateway
+Subnets are basically labs insidea building in which there are multiple instances in the same availibilty zone 
+Every instance is the same subnet is having same network name 
+Each of the instance in the same subnet are connected using Switches and there is an component called DHCP which provides private ip
+to newly deployed instances in the network
+To connect to the outside world we need a public ip so for connection the router is connected between subnets for communication
+
+For connection with outside world e require IGW)internet gateway which do SNAT or DNAT depending uphone the route of the communication
+
+In NAT the public ip of the router takes the packet for the private subnet instances to the outside world and then gives the rsult
+for outside world to coomunicate with the private subnet the public ip of the gateway is used and DNAT rules are addes in the router for translating the router ip at the subnet 
+layer to one or either all the insatnaces in the network
+
+For two different VPC to communicate between each other we require the concept called VPC Peering
+
+There are two type of subnets:Public and Private
+
+
+In amazon they reserve 5 ip for different purposes
+
+1. DHCP Server
+2. First ip to the ROuter that is used for communication between two subnets
+3. The zeroth IP to the network name
+4. The last ip to the broadcasting address
+5. One I even don't know
+
+
+
+
+
+
+
