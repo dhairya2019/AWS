@@ -82,6 +82,50 @@ In amazon they reserve 5 ip for different purposes
 4. The last ip to the broadcasting address
 5. One I even don't know
 
+Only applying Denating rules on private subnets won't give you the internet connectivity /If there is no interet gateway physically connected to
+the subnet and the subnet that is connected to internet is known as Public Subnet as it comes in demilitarized zone or we can say that it is 
+having public access
+
+
+One use case for VPC is put ypur php in public subnet and database server in private subnet as data is most critical thing to us and nobody can hack it or do
+vulnerability scanning on it as it doesn't have public internet connectivity
+
+
+****The whole concept of DMZ or exposing your private subnet instance to the public internet by adding denating rule to internet gateway and physically connecting it to
+the private subnet router then switch to then instance is done using *Auto Assign IP* enabling
+
+After adding everything we need to add a rule into subnet that if anyone packet wants to go to 0.0.0.0/0 connect to the internet gateway
+
+This rule is created in the router of the subnet
+
+
+By default the route table provided by aws is 
+
+https://linoxide.com/linux-how-to/14-tcpdump-commands-capture-network-traffic-linux/
+
+
+When you have to first SSH on public subnet and then ssh on public subnet to access privaye subnet 
+The public subnet here is known as bastion host or jump box
+
+
+In one network card we can provide multiple ips  so that you can ask igw to connect to different instances in the same subnet
+
+
+
+
+**You can change the the ip in linux
+
+You can even add multiple ip to a nic 
+
+just execute
+
+ifconfig enp0s3:1 1.2.3.4
+
+then your enp0s3:1 router will have different ip but same mac address as of enp0s3
+
+
+
+
 
 
 
